@@ -8,7 +8,7 @@ export class CdkPipelineStack extends cdk.Stack {
     super(scope, id, props);
 
     const pipeline = new CodePipeline(this,"Pipeline", {
-      pipelineName: 'ChatAppPipeline',
+      pipelineName: 'ChatAppCodePipeline',
       synth: new ShellStep('Synth', {
         /* input: CodePipelineSource.gitHub(
           'DamianoLuzi/CDKChatApp','main'
