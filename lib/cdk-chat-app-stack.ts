@@ -14,8 +14,13 @@ export class CdkChatAppStack extends cdk.Stack {
     const pipeline = new CodePipeline(this,"Pipeline", {
       pipelineName: 'ChatAppPipeline',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub(
+        /* input: CodePipelineSource.gitHub(
           'DamianoLuzi/CDKChatApp','main'
+        ), */
+        input: CodePipelineSource.connection(
+          'DamianoLuzi/CDKChatApp','main',{
+            connectionArn: 'arn:aws:codeconnections:us-east-1:718579638605:connection/f3b44eaa-8aed-44d6-a0cf-b8186048d4e6',
+          }
         ),
         commands: [
           'npm ci',
