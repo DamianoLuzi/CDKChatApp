@@ -25,7 +25,7 @@ export class CdkChatAppStack extends cdk.Stack {
         environment: { TABLE_NAME: table.tableName},
         timeout: cdk.Duration.seconds(timeoutSec),
         architecture: lambda.Architecture.ARM_64,
-        functionName: id,
+        functionName: `${this.stackName}-${id}`,
       });
     };
 
