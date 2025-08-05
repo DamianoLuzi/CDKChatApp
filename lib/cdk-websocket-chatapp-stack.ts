@@ -5,31 +5,10 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as apigwv2 from 'aws-cdk-lib/aws-apigatewayv2';
 import * as integrations from 'aws-cdk-lib/aws-apigatewayv2-integrations';
-import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 
 export class CdkChatAppStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
-    const pipeline = new CodePipeline(this,"Pipeline", {
-      pipelineName: 'ChatAppPipeline',
-      synth: new ShellStep('Synth', {
-        /* input: CodePipelineSource.gitHub(
-          'DamianoLuzi/CDKChatApp','main'
-        ), */
-        input: CodePipelineSource.connection(
-          'DamianoLuzi/CDKChatApp','main',{
-            connectionArn: 'arn:aws:codeconnections:us-east-1:718579638605:connection/f3b44eaa-8aed-44d6-a0cf-b8186048d4e6',
-          }
-        ),
-        commands: [
-          'npm ci',
-          'npm run build',
-          'npx cdk synth',
-        ],
-      }),
-      crossAccountKeys: false, // Set to true if you need cross-account deployments
-    });
 
     // 1. DynamoDB Table
     const table = new dynamodb.Table(this, 'ConnectionsTable', {
