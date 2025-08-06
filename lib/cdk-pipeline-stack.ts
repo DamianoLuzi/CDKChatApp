@@ -15,7 +15,8 @@ export class CdkPipelineStack extends cdk.Stack {
         ), */
         input: CodePipelineSource.connection(
           'DamianoLuzi/CDKChatApp','main',{
-            connectionArn: 'arn:aws:codeconnections:us-east-1:718579638605:connection/f3b44eaa-8aed-44d6-a0cf-b8186048d4e6',
+            //connectionArn: 'arn:aws:codeconnections:us-east-1:718579638605:connection/f3b44eaa-8aed-44d6-a0cf-b8186048d4e6',
+            connectionArn: 'arn:aws:codeconnections:us-east-1:718579638605:connection/65a5d6f9-1429-48c9-ae37-e6ae874d8f8'
           }
         ),
         commands: [
