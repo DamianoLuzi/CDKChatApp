@@ -31,6 +31,10 @@ export class CdkPipelineStack extends cdk.Stack {
     new PipelineStage(
       this, 'DEV', {env: { account: '718579638605', region: 'us-east-1' }})
   )
+    pipeline.addStage(
+    new PipelineStage(
+      this, 'STG', {env: { account: '718579638605', region: 'us-east-1' }})
+  )
 }
 }
 
