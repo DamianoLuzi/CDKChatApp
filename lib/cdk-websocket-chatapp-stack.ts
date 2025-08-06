@@ -46,7 +46,7 @@ export class CdkChatAppStack extends cdk.Stack {
 
     // 5. API Gateway WebSocket API
     const wsApi = new apigwv2.WebSocketApi(this, 'ChatApi', {
-      apiName: 'chat-app-api',
+      apiName: `${this.stackName}-chat-api`,
       routeSelectionExpression: '$request.body.action',
       connectRouteOptions: {
         integration: new integrations.WebSocketLambdaIntegration('ConnectIntegration', connectFn),
